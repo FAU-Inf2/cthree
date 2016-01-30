@@ -1,0 +1,32 @@
+apply plugin: 'java'
+apply plugin: 'application'
+
+version = '1.0'
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+mainClassName = 'de.fau.cs.inf2.cthree.execute.CThreeClusters'
+
+repositories {
+  mavenCentral()
+}
+
+dependencies {
+  compile group: 'com.fasterxml.jackson.core', name: 'jackson-core', version: '2.5.4'
+  compile group: 'com.fasterxml.jackson.core', name: 'jackson-annotations', version: '2.5.4'
+  compile group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.5.4'
+  compile group: 'com.fasterxml.jackson.dataformat', name: 'jackson-dataformat-smile', version: '2.5.4'
+}
+
+task fatJar(type: Jar) {
+  manifest {
+    attributes 'Implementation-Title': 'C3 Example Application',
+      'Implementation-Version': version,
+      'Main-Class': mainClassName
+  }
+
+  baseName = project.name + '-all'
+  from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } } with jar
+}
+
+build.finalizedBy(fatJar)
