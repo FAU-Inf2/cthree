@@ -30,10 +30,10 @@ This repository is structured as follows:
   - uncompressed size: 150M
 - `data/eclipsejdt.json.lrz`:
   - data set for the [EclipseJDTCore repository](http://git.eclipse.org/c/jdt/eclipse.jdt.core.git)
-  - **note**: this data set is still missing in the repository
+  - uncompressed size: 399M
 - `data/eclipseswt.json.lrz`:
   - data set for the [EclipseSWT repository](http://git.eclipse.org/gitroot/platform/eclipse.platform.swt.git)
-  - **note**: this data set is still missing in the repository
+  - uncompressed size: 271M
 - `data/fitlibrary.json.lrz`:
   - data set for the [Fitlibrary repository](http://sourceforge.net/projects/fitlibrary/)
   - uncompressed size: 12M
