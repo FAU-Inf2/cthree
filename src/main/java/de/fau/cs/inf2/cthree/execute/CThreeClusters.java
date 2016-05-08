@@ -31,6 +31,8 @@ import de.fau.cs.inf2.cthree.data.Algorithm;
 import de.fau.cs.inf2.cthree.io.DataReader;
 
 import java.util.List;
+import java.util.Map;
+import java.util.HashMap;
 import java.io.File;
 
 public final class CThreeClusters {
@@ -74,6 +76,40 @@ public final class CThreeClusters {
     }
   }
 
+  private static final Map<Algorithm, Integer> getNumberOfClusters(final DataSet dataSet) {
+    final Map<Algorithm, Integer> counts = new HashMap<Algorithm, Integer>();
+
+    for (final Algorithm algorithm : Algorithm.values()) {
+      counts.put(algorithm, 0);
+    }
+
+    for (final Cluster cluster: dataSet) {
+      for (final Algorithm detectedBy : cluster.detectedBy) {
+        counts.put(detectedBy, counts.get(detectedBy) + 1);
+      }
+    }
+
+    return counts;
+  }
+
+  private static final Map<Algorithm, Integer> getNumberOfCodeChanges(final DataSet dataSet) {
+    final Map<Algorithm, Integer> counts = new HashMap<Algorithm, Integer>();
+
+    for (final Algorithm algorithm : Algorithm.values()) {
+      counts.put(algorithm, 0);
+    }
+
+    for (final Cluster cluster: dataSet) {
+      final int count = cluster.members.length;
+
+      for (final Algorithm detectedBy : cluster.detectedBy) {
+        counts.put(detectedBy, counts.get(detectedBy) + count);
+      }
+    }
+
+    return counts;
+  }
+
   public static final void main(final String[] args) {
     if (args.length != 1 || args[0].equals("-h")) {
       printUsage();
@@ -97,7 +133,20 @@ public final class CThreeClusters {
       }
     }
 
-    printDataSet(dataSet);
+    final Map<Algorithm, Integer> countsClusters = getNumberOfClusters(dataSet);
+    final Map<Algorithm, Integer> countsCodeChanges = getNumberOfCodeChanges(dataSet);
+
+    System.out.println("number of clusters:");
+    for (final Algorithm algorithm : Algorithm.values()) {
+      System.out.format("\t%s: %d\n", algorithm.toString(), countsClusters.get(algorithm));
+    }
+
+    System.out.println("number of code changes:");
+    for (final Algorithm algorithm : Algorithm.values()) {
+      System.out.format("\t%s: %d\n", algorithm.toString(), countsCodeChanges.get(algorithm));
+    }
+
+    //printDataSet(dataSet);
   }
 
 }
