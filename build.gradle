@@ -29,4 +29,20 @@ task fatJar(type: Jar) {
   from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } } with jar
 }
 
+task (executeCthreeEvaluation, dependsOn: 'classes', type:JavaExec) {
+  main = 'de.fau.cs.inf2.cthree.execute.CThreeClusters'
+  classpath = sourceSets.main.runtimeClasspath
+  if (project.hasProperty("appArgs")) {
+    args Eval.me(appArgs)
+  }
+}
+
+task (executePhdThesisEvaluation, dependsOn: 'classes', type:JavaExec) {
+  main = 'de.fau.cs.inf2.cthree.execute.PhdThesisEvaluation'
+  classpath = sourceSets.main.runtimeClasspath
+  if (project.hasProperty("appArgs")) {
+    args Eval.me(appArgs)
+  }
+}
+
 build.finalizedBy(fatJar)
