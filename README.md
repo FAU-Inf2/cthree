@@ -2,6 +2,7 @@
 
 This repository contains the evaluation results of the research paper "P. Kreutzer, G.  Dotzler, M. Ring, B. M. Eskofier, M. Philippsen: Automatic Clustering of Code Changes", as well as a simple Java tool to read in the data.
 
+It also contains the tree differencing evaluation of the PhD thesis "G. Dotzler: Learning Code Transformations from Repositories, Friedrich-Alexander University Erlangen-Nürnberg, 2018".
 
 ## Data Format
 
@@ -62,15 +63,18 @@ This repository is structured as follows:
 To build the example application type
 
 ```
-gradle build
+./gradlew build
 ```
 
-This creates the application jar `build/libs/cthree-all-1.0.jar`. One way to run it (at least on a Unix system), is the script `cthree` in the root directory. The path to a data set file (see above) has to be provided as command line argument:
+This creates the application jar `build/libs/cthree-all-1.0.jar`. One way to run it (at least on a Unix system), is gradle:
 
 ```
-./cthree path/to/dataset.json
+./gradlew executeLaseEvaluation -PappArgs="['JSON_FILE_PATH']" 
 ```
-
+To print the phd thesis evaluation use:
+```
+./gradlew executeLaseEvaluation -PappArgs="['PATH_TO_ECLIPSE_JDT_JSON','PATH_TO_ECLIPSE_SWT_JSON' ]" 
+```
 
 ## License
 
