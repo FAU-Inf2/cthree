@@ -4,6 +4,10 @@ This repository contains the evaluation results of the research paper "P. Kreutz
 
 It also contains the tree differencing evaluation of the PhD thesis "G. Dotzler: Learning Code Transformations from Repositories, Friedrich-Alexander University Erlangen-Nürnberg, 2018".
 
+Archived copy:
+
+[![DOI](https://zenodo.org/badge/50670376.svg)](https://zenodo.org/badge/latestdoi/50670376)
+
 ## Data Format
 
 For each analyzed repository (see below), there is a compressed JSON file that contains the detected clusters of code changes. Use [lrzip](https://github.com/ckolivas/lrzip) to uncompress the archives. Warning: the uncompressed archives are huge!
