@@ -2,7 +2,7 @@
 
 This repository contains the evaluation results of the research paper "P. Kreutzer, G.  Dotzler, M. Ring, B. M. Eskofier, M. Philippsen: Automatic Clustering of Code Changes", as well as a simple Java tool to read in the data.
 
-It also contains the tree differencing evaluation of the PhD thesis "G. Dotzler: Learning Code Transformations from Repositories, Friedrich-Alexander University Erlangen-Nürnberg, 2018".
+It also contains the tree differencing evaluation of the PhD thesis "G. Dotzler: Learning Code Transformations from Repositories, Friedrich-Alexander University Erlangen-Nürnberg, 2018".	https://doi.org/10.25593/978-3-96147-142-3
 
 Archived copy:
 
